@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+
+            height: auto;
+            width: 300px;
+            margin-left: 200px;
+            margin-top: 10px;
+            border: 1px solid black;
+            
+        }
+        #tbl{
+            margin-top: 50px;
+            margin-left: 200px;
+            display: none;
+            width: 350px;
+            
+            
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <form action="" id="forms">
+            <label for="">activity :</label><input type="text" value="" id="act"><br>
+            <label for="">task :</label><input type="text" value="" id="tas">
+            <br>
+            <input type="button" value="cliclk" onclick="adds() " id="btn1">
+        </form>
+    </div>
+    <div class="second" >
+        <table id="tbl" border="2">
+            <tr>
+                <th>si no</th>
+                <th>date</th>
+                <th>task</th>
+                <th>activity</th>
+                <th>status</th>
+                <th>remove</th>
+            </tr>
+
+        </table>
+
+    </div>
+    <script>
+        i=0
+        function adds(){
+            act = document.getElementById("act")
+            tas = document.getElementById("tas")
+            tbl = document.getElementById("tbl")
+            
+
+            var row = tbl.insertRow()
+            cell0 = row.insertCell(0)
+            cell1 = row.insertCell(1)
+            cell2 = row.insertCell(2)
+            cell3 = row.insertCell(3)
+            cell4 = row.insertCell(4)
+            cell5 = row.insertCell(5)
+            
+            
+            tbl.style.display = "block"
+            cell0.innerHTML = i
+            cell1.innerHTML = new Date() .toDateString()
+            cell2.innerHTML = tas.value
+            cell3.innerHTML = act.value
+            var btn = document.createElement("button")
+            cell4.appendChild(btn)
+            btn.innerHTML="activate"
+            btn.addEventListener("click",function(event){
+                btn.innerHTML= "activated"
+                var c = event.target
+                c.disabled = true
+                
+            })
+            var dlt = document.createElement("button")
+            cell5.appendChild(dlt)
+            dlt.innerHTML = "delete"
+            dlt.addEventListener("click",function(a){
+               var k =a.target.parentElement.parentElement
+               k.remove()
+            })
+            i++
+
+            
+
+        }
+    </script>
+
+</body>
+
+</html>
